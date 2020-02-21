@@ -67,7 +67,7 @@ cluster "packet" {
   #
   # You can find it in the "IP & Networks" configuration of your project for your location
   # If you don't see an IP block for your location you have to create a new
-  server on that location and the IP block will be assigned.
+  # server on that location and the IP block will be assigned.
   node_private_cidr = "10.0.0.0/8"
 
   # CNI plugin ("calico", "flannel")
