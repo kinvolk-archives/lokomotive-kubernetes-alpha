@@ -25,11 +25,6 @@ cd ~/lokomotive-infra/mypacketcluster
 Create a file named `mypacketcluster.lokocfg` with the following contents:
 
 ```hcl
-
-variable "packet_token" {
-  type = string
-}
-
 cluster "packet" {
   # Change the location where lokoctl stores the cluster assets.
   asset_dir = "${pathexpand("~/lokoctl-assets/mypacketcluster")}"
