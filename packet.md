@@ -102,6 +102,8 @@ export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 lokoctl-0.0.1 cluster install
 ```
 
+*Tip*: sometimes servers fail to provision on Packet, if that happens re-run the installation command and cluster installation will continue.
+
 ## Verify
 
 The `kubeconfig` is generated under the assets directory in the following path:
