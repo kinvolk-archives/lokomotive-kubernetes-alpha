@@ -74,7 +74,17 @@ openssl s_client -connect matchbox.example.com:8081 \
   -key /path/to/matchbox/client.key
 ```
 
-### Step 3. Define cluster configuration
+## Step 3. Set up credentials
+
+You need to have your SSH public key in the `ssh-agent`.
+Add your SSH private key to `ssh-agent`
+
+```console
+ssh-add ~/.ssh/id_rsa
+ssh-add -L
+```
+
+### Step 4. Define cluster configuration
 
 Create a file named `mybaremetalcluster.lokocfg` with the following contents:
 

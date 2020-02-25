@@ -96,6 +96,14 @@ export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
 export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
+You also need to have your SSH public key in the `ssh-agent`.
+Add your SSH private key to `ssh-agent`
+
+```console
+ssh-add ~/.ssh/id_rsa
+ssh-add -L
+```
+
 ### Step 4. Create cluster
 
 ```
