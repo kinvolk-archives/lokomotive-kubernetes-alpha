@@ -35,6 +35,7 @@ cluster "aws" {
   cluster_name = "myawscluster"
 
   controller_count = 3
+  controller_type = "t3.medium"
 
   # Define a Flatcar Linux channel ('stable', 'beta', 'alpha' or 'edge')
   os_channel = "stable"
@@ -55,6 +56,7 @@ cluster "aws" {
 
   # Number of worker nodes
   worker_count = 3
+  worker_type = "t3.medium"
 }
 ```
 
