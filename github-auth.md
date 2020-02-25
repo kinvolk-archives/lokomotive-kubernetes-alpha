@@ -94,10 +94,10 @@ variable "gangway_session_key" {
 # Dex component configuration.
 component "dex" {
   # NOTE: This name should match with the contour component configuration
-  `ingress_hosts`
-  ingress_host = "dex.test-cluster.lokomotive.org"
+  # `ingress_hosts`
+  ingress_host = "dex.YOUR.CLUSTER.DOMAIN.NAME"
 
-  issuer_host = "https://dex.test-cluster.lokomotive.org"
+  issuer_host = "https://dex.YOUR.CLUSTER.DOMAIN.NAME"
 
   # GitHub connector configuration.
   connector "github" {
@@ -110,7 +110,7 @@ component "dex" {
       client_secret = var.github_client_secret
 
       # The authorization callback URL as configured with GitHub.
-      redirect_uri = "https://dex.test-cluster.lokomotive.org/callback"
+      redirect_uri = "https://dex.YOUR.CLUSTER.DOMAIN.NAME/callback"
 
       # Can be 'name', 'slug' or 'both'.
       # See https://github.com/dexidp/dex/blob/master/Documentation/connectors/github.md
@@ -138,19 +138,19 @@ component "dex" {
 
 # Gangway component configuration.
 component "gangway" {
-  cluster_name = "test-cluster"
+  cluster_name = "YOUR-CLUSTER-NAME"
 
-  ingress_host = "gangway.test-cluster.lokomotive.org"
+  ingress_host = "gangway.YOUR.CLUSTER.DOMAIN.NAME"
 
   session_key = var.gangway_session_key
 
-  api_server_url = "https://test-cluster.lokomotive.org:6443"
+  api_server_url = "https://YOUR.CLUSTER.DOMAIN.NAME:6443"
 
   # Dex 'auth' endpoint.
-  authorize_url = "https://dex.test-cluster.lokomotive.org/auth"
+  authorize_url = "https://dex.YOUR.CLUSTER.DOMAIN.NAME/auth"
 
   # Dex 'token' endpoint.
-  token_url = "https://dex.test-cluster.lokomotive.org/token"
+  token_url = "https://dex.YOUR.CLUSTER.DOMAIN.NAME/token"
 
   # The static client id and secret.
   client_id     = var.dex_static_client_gangway_id
@@ -189,7 +189,7 @@ dex_static_client_gangway_id="gangway"
 
 # A random secret key (create one with `openssl rand -base64 32`)
 gangway_session_key="PMXEGiQ7fScPxuKS/DAimsCHueeWxT7HBL6I16sZzHE="
-gangway_redirect_url = "https://gangway.test-cluster.lokomotive.org>/callback"
+gangway_redirect_url = "https://gangway.YOUR.CLUSTER.DOMAIN.NAME>/callback"
 
 # GitHub OAuth application client ID and secret.
 github_client_id = "87a2e79c21e7ed32re51"
@@ -210,17 +210,17 @@ Issuing an HTTPS request to the discovery endpoint verifies the successful insta
 of Dex.
 
 ```console
-$ curl https://dex.test-cluster.lokomotive.org/.well-known/openid-configuration
+$ curl https://dex.YOUR.CLUSTER.DOMAIN.NAME/.well-known/openid-configuration
 
 {
-  "issuer": "https://dex.test-cluster.lokomotive.org",
+  "issuer": "https://dex.YOUR.CLUSTER.DOMAIN.NAME",
   .
   .
   .
 }
 ```
 
-To verify the Gangway installation, open the URL `https://gangway.test-cluster.lokomotive.org` on your browser.
+To verify the Gangway installation, open the URL `https://gangway.YOUR.CLUSTER.DOMAIN.NAME` on your browser.
 
 ### Step 5: Configure An API Server to Use Dex as an OIDC Authenticator
 
@@ -235,13 +235,13 @@ Configuring an API server to use the OpenID Connect authentication plugin requir
 To reconfigure the API server with specific flags, edit the `kube-apiserver` DaemonSet as follows:
 
 ```console
-kubectl -n kube-system edit daemonset kube-apiserver
+kubectl -n kube-system edit deployment kube-apiserver
 ```
 
 Add the following arguments:
 
 ```console
---oidc-issuer-url=https://dex.test-cluster.lokomotive.org
+--oidc-issuer-url=https://dex.YOUR.CLUSTER.DOMAIN.NAME
 --oidc-client-id=gangway
 --oidc-username-claim=email
 --oidc-groups-claim=groups
@@ -259,20 +259,22 @@ Example:
 ```console
      containers:
       - command:
-        - /hyperkube
-        - kube-apiserver
-        - --advertise-address=$(POD_IP)
-        - --allow-privileged=true
-        - --anonymous-auth=false
-        - --authorization-mode=RBAC
         .
         .
-        .
-        .
-        --oidc-issuer-url=https://dex.test-cluster.lokomotive.org
-        --oidc-client-id=gangway
-        --oidc-username-claim=email
-        --oidc-groups-claim=groups
+        - exec /hyperkube \
+          kube-apiserver \
+          --advertise-address=$(POD_IP) \
+          --allow-privileged=true \
+          --anonymous-auth=false \
+          --authorization-mode=RBAC \
+          .
+          .
+          .
+          .
+          --oidc-issuer-url=https://dex.YOUR.CLUSTER.DOMAIN.NAME \
+          --oidc-client-id=gangway \
+          --oidc-username-claim=email \
+          --oidc-groups-claim=groups
 ```
 
 It may take a few moments for the API server pods to restart. You can check the status by running the following command:
@@ -283,8 +285,8 @@ kubectl get pods -n kube-system
 
 ## Step 6: Authenticate With Gangway (For Users)
 
-Sign in to Gangway using the URL `https://gangway.test-cluster.lokomotive.org`.
-ou should be able to authenticate via GitHub. Upon successful authentication, you should be redirected to https://gangway.test-cluster.lokomotive.org/commandline.
+Sign in to Gangway using the URL `https://gangway.YOUR.CLUSTER.DOMAIN.NAME`.
+ou should be able to authenticate via GitHub. Upon successful authentication, you should be redirected to https://gangway.YOUR.CLUSTER.DOMAIN.NAME/commandline.
 
 Gangway provides further instructions for configuring `kubectl` to gain access to the cluster.
 
