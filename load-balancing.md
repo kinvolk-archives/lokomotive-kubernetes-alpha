@@ -73,7 +73,7 @@ In few minutes pods from MetalLB and Contour are in `Running` state.
 To verify that the BGP sessions are established, check the logs of the MetalLB speaker pods:
 
 ```console
-kubectl logs speaker-89764 -n metallb-system
+kubectl -n metallb-system logs speaker-89764
 ...
 {"caller":"bgp.go:63","event":"sessionUp","localASN":65000,"msg":"BGP session established","peer":"10.88.72.128:179","peerASN":65530,"ts":"2019-09-17T13:10:43.194650355Z"}
 ```
@@ -81,6 +81,6 @@ kubectl logs speaker-89764 -n metallb-system
 Contour service has an external IP address if it is properly set up with MetalLB.
 
 ```console
-kubectl get svc contour -n projectcontour
+kubectl get svc envoy -n projectcontour
 NAME      TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)                      AGE
-contour   LoadBalancer   10.3.101.86   1XX.7X.XX9.XXX   80:30511/TCP,443:32317/TCP   5m
+envoy     LoadBalancer   10.3.101.86   1XX.7X.XX9.XXX   80:30511/TCP,443:32317/TCP   5m
