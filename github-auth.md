@@ -305,4 +305,4 @@ kubectl create clusterrolebinding view-only --clusterrole view --user='jane@exam
 
 ## Summary
 
-In this guide you've learned how use Dex and Gangway to leverage existing identity providers for authentication and authorization on Lokomotive clusters."
+In this guide you've learned how use Dex and Gangway to leverage existing identity providers for authentication and authorization on Lokomotive clusters.
