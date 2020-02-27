@@ -17,7 +17,7 @@ Some components included in Lokomotive Kubernetes are:
 
 ### Versioning
 
-So you can test updates, this alpha release contains two fictitious versions of lokoctl (the Lokomotive Kubernetes CLI): 0.0.1 and 0.0.2.
+So you can test updates, this [alpha release](https://github.com/kinvolk/lokomotive-kubernetes-alpha/releases/tag/v0.0.1) contains two fictitious versions of lokoctl (the Lokomotive Kubernetes CLI): 0.0.1 and 0.0.2.
 
 In the first iteration, the Lokomotive Kubernetes version is fully contained in the lokoctl binary.
 A Lokomotive Kubernetes version includes a particular Kubernetes version and a set of component versions.
