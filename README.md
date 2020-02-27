@@ -59,7 +59,7 @@ To install a component add the relevant section to your `.lokocfg` file, for exa
 component metrics-server {}
 ```
 
-You can find more detailed information about Lokomotive Kubernetes components here: https://github.com/kinvolk/lokomotive/tree/iaguis/component-ref/docs/configuration-guides/components
+You can find more detailed information about Lokomotive Kubernetes components here: https://github.com/kinvolk/lokomotive/tree/master/docs/configuration-guides/components
 
 Note that these references are not final and might have inconsistencies.
 
