@@ -36,6 +36,8 @@ This means we can do in-place updates.
 
 The lokoctl command to install a cluster is idempotent, so to update Lokomotive Kubernetes you run the same command that installs a cluster with a different version of lokoctl.
 
+**Note**: there's a [constant Terraform diff when re-running `lokoctl cluster install`](https://github.com/kinvolk/lokomotive/issues/24). This is just cosmetic and doesn't have negative effects.
+
 **Note**: there's a bug in the runc version shipped on Flatcar Container Linux that prevents Kubelet updates to work, so that's disabled for now and the Kubelet version will stay the same.
 We have tested the updates work fine with a newer runc but this is not yet shipped in a working state on Flatcar Container Linux.
 
