@@ -3,7 +3,7 @@
 * AWS account and IAM credentials.
 * AWS Route53 DNS Zone (registered Domain Name or delegated subdomain).
 * Terraform v0.12.x and [terraform-provider-ct](https://github.com/poseidon/terraform-provider-ct)
-  installed locally.random
+  installed locally.
 * An SSH key pair for management access.
 * `kubectl` installed locally to access the Kubernetes cluster.
 
