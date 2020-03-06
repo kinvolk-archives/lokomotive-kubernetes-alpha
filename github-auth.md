@@ -38,21 +38,21 @@ To create a fully functioning OIDC authentication infrastructure, we need the fo
 
 * [cert-manager](https://cert-manager.io/docs/) deployed on the cluster.
 
-  Installation instructions for [cert-manager](https://github.com/kinvolk/lokomotive/blob/master/docs/configuration-guides/components/cert-manager.md) Lokomotive component.
+  Installation instructions for [cert-manager](https://github.com/kinvolk/lokomotive/blob/master/docs/configuration-reference/components/cert-manager.md) Lokomotive component.
 
 * [MetalLB](https://metallb.universe.tf/) deployed on the cluster.
 
   **NOTE**: Required only for the bare metal and Packet providers.
 
-   Installation instructions for [MetalLB](https://github.com/kinvolk/lokomotive/blob/master/docs/configuration-guides/components/metallb.md) component.
+   Installation instructions for [MetalLB](https://github.com/kinvolk/lokomotive/blob/master/docs/configuration-reference/components/metallb.md) component.
 
 * [Contour](https://projectcontour.io/) deployed on the cluster.
 
-  Installation instructions for [Contour](https://github.com/kinvolk/lokomotive/blob/master/docs/configuration-guides/components/contour.md) component.
+  Installation instructions for [Contour](https://github.com/kinvolk/lokomotive/blob/master/docs/configuration-reference/components/contour.md) component.
 
 * [ExternalDNS](https://github.com/kubernetes-sigs/external-dns) deployed on the cluster.
 
-   Installation instructions for [ExternalDNS](https://github.com/kinvolk/lokomotive/blob/master/docs/configuration-guides/components/external-dns.md) component.
+   Installation instructions for [ExternalDNS](https://github.com/kinvolk/lokomotive/blob/master/docs/configuration-reference/components/external-dns.md) component.
 
 ## Estimated Time
 
